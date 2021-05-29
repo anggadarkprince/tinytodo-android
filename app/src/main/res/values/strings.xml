@@ -2,4 +2,6 @@
     <string name="app_name">TinyTodo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_item">Add Item</string>
+    <string name="no_data_available">No Data Available</string>
 </resources>
