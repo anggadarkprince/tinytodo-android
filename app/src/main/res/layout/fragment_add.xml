@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        android:autofillHints="Title of item" />
 
     <Spinner
         android:id="@+id/spinnerPriorities"
@@ -52,5 +52,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerPriorities"
-        android:autofillHints="" />
+        android:autofillHints="Description of item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
