@@ -17,6 +17,7 @@ import com.anggaari.tinytodo.databinding.FragmentListBinding
 import com.anggaari.tinytodo.fragments.SharedViewModel
 import com.anggaari.tinytodo.fragments.list.adapter.ListAdapter
 import com.google.android.material.snackbar.Snackbar
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
@@ -71,6 +72,9 @@ class ListFragment : Fragment() {
         val recyclerView = binding.recyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
+        recyclerView.itemAnimator = SlideInUpAnimator().apply {
+            addDuration = 300
+        }
         swipeToDelete(recyclerView)
     }
 
