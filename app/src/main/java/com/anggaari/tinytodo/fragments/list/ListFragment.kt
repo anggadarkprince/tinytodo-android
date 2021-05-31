@@ -12,11 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.anggaari.tinytodo.R
 import com.anggaari.tinytodo.data.viewmodel.TodoViewModel
 import com.anggaari.tinytodo.databinding.FragmentListBinding
+import com.anggaari.tinytodo.fragments.SharedViewModel
 
 class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
     private val todoViewModel: TodoViewModel by viewModels()
     private val adapter: ListAdapter by lazy { ListAdapter() }
+    private val sharedViewModel: SharedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +38,17 @@ class ListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
         todoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
+            sharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
+        })
+        sharedViewModel.isEmptyDatabase.observe(viewLifecycleOwner, Observer { isEmptyDatabase ->
+            if (isEmptyDatabase) {
+                binding.imageViewNoData.visibility = View.VISIBLE
+                binding.textViewNoData.visibility = View.VISIBLE
+            } else {
+                binding.imageViewNoData.visibility = View.INVISIBLE
+                binding.textViewNoData.visibility = View.INVISIBLE
+            }
         })
 
         // Set top right menu

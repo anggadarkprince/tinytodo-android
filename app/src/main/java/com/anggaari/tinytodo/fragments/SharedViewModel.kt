@@ -7,10 +7,14 @@ import android.widget.AdapterView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import com.anggaari.tinytodo.R
 import com.anggaari.tinytodo.data.models.Priority
+import com.anggaari.tinytodo.data.models.TodoData
 
 class SharedViewModel(application: Application): AndroidViewModel(application) {
+    val isEmptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
+
     val prioritySelectedListener: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             when(position) {
@@ -21,6 +25,10 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {}
+    }
+
+    fun checkIfDatabaseEmpty(todoData: List<TodoData>) {
+        isEmptyDatabase.value = todoData.isEmpty()
     }
 
     fun verifyDataFromUser(title: String, description: String): Boolean {
