@@ -1,16 +1,11 @@
 package com.anggaari.tinytodo.fragments
 
-import android.app.Activity
 import android.app.Application
-import android.content.Context
 import android.text.TextUtils
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.anggaari.tinytodo.R
