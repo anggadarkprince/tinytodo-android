@@ -48,6 +48,7 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         todoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
             sharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
+            binding.recyclerView.scheduleLayoutAnimation()
         })
 
         /* Move to data binding see: BindingAdapters.kt
@@ -72,9 +73,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         recyclerView.adapter = adapter
         //recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView.itemAnimator = SlideInUpAnimator().apply {
-            addDuration = 300
-        }
+        //recyclerView.itemAnimator = SlideInUpAnimator().apply {
+        //    addDuration = 300
+        //}
         swipeToDelete(recyclerView)
     }
 
