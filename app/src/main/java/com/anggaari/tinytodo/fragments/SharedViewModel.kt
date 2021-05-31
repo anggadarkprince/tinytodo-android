@@ -19,7 +19,7 @@ import com.anggaari.tinytodo.data.models.TodoData
 
 
 class SharedViewModel(application: Application): AndroidViewModel(application) {
-    val isEmptyDatabase: MutableLiveData<Boolean> = MutableLiveData(true)
+    val isEmptyDatabase: MutableLiveData<Boolean> = MutableLiveData(false)
 
     val prioritySelectedListener: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

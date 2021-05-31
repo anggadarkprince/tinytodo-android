@@ -2,6 +2,7 @@ package com.anggaari.tinytodo.fragments.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.anggaari.tinytodo.data.models.TodoData
@@ -69,7 +70,10 @@ class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
     }
 
     fun setData(todoData: List<TodoData>) {
+        val todoDiffUtil = TodoDiffUtil(dataList, todoData)
+        val todoDiffResult = DiffUtil.calculateDiff(todoDiffUtil)
         this.dataList = todoData
-        notifyDataSetChanged()
+        todoDiffResult.dispatchUpdatesTo(this)
+        //notifyDataSetChanged()
     }
 }
