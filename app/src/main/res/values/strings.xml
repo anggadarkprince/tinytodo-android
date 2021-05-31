@@ -14,7 +14,7 @@
     <string name="delete">Delete</string>
     <string name="successfully_updated">Successfully updated!</string>
     <string name="please_fill_out">Please fill out all fields!</string>
-    <string name="delete_success">Successfully removed:  %s?</string>
+    <string name="delete_success">Successfully removed:  %s!</string>
     <string name="delete_all_success">Successfully removed all items?</string>
     <string name="delete_title">Delete %s?</string>
     <string name="delete_all_title">Delete All?</string>
@@ -22,6 +22,7 @@
     <string name="delete_all_message">Are you sure want to remove everything?</string>
     <string name="yes">Yes</string>
     <string name="No">No</string>
+    <string name="undo">Undo</string>
 
     <string-array name="priorities">
         <item>High Priority</item>

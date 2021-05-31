@@ -1,18 +1,14 @@
-package com.anggaari.tinytodo.fragments.list
+package com.anggaari.tinytodo.fragments.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.anggaari.tinytodo.R
-import com.anggaari.tinytodo.data.models.Priority
 import com.anggaari.tinytodo.data.models.TodoData
 import com.anggaari.tinytodo.databinding.RowLayoutBinding
 
 class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
-    private var dataList = emptyList<TodoData>()
+    var dataList = emptyList<TodoData>()
 
     class MyViewHolder(private val binding: RowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(todoData: TodoData) {
