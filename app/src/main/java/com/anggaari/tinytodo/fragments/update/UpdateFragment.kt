@@ -1,5 +1,6 @@
 package com.anggaari.tinytodo.fragments.update
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -23,7 +24,6 @@ class UpdateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FragmentUpdateBinding.inflate(inflater, container, false)
 
         setHasOptionsMenu(true)
@@ -42,10 +42,30 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_save) {
-            updateItem()
+        when (item.itemId) {
+            R.id.menu_save -> updateItem()
+            R.id.menu_delete -> confirmItemRemoval()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun confirmItemRemoval() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+            todoViewModel.deleteData(args.currentItem)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.delete_success, args.currentItem.title),
+                Toast.LENGTH_SHORT
+            ).show()
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+        }
+        builder.setNegativeButton(getString(R.string.No)) { _, _ -> }
+        builder
+            .setTitle(getString(R.string.delete_title, args.currentItem.title))
+            .setMessage(getString(R.string.delete_message, args.currentItem.title))
+            .create()
+            .show()
     }
 
     private fun updateItem() {
@@ -62,11 +82,18 @@ class UpdateFragment : Fragment() {
                 description
             )
             todoViewModel.updateData(updatedItem)
-            Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.successfully_updated),
+                Toast.LENGTH_SHORT
+            ).show()
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         } else {
-            Toast.makeText(requireContext(), "Please fill out all fields!", Toast.LENGTH_SHORT)
-                .show()
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.please_fill_out),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }
