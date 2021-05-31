@@ -1,7 +1,6 @@
 package com.anggaari.tinytodo.fragments.list
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -13,17 +12,36 @@ import com.anggaari.tinytodo.data.models.TodoData
 import com.anggaari.tinytodo.databinding.RowLayoutBinding
 
 class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
-    var dataList = emptyList<TodoData>()
+    private var dataList = emptyList<TodoData>()
 
-    class MyViewHolder(val binding: RowLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    class MyViewHolder(private val binding: RowLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(todoData: TodoData) {
+            binding.todoData = todoData
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): MyViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = RowLayoutBinding.inflate(layoutInflater, parent, false)
+                return MyViewHolder(binding)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = RowLayoutBinding.inflate(layoutInflater, parent, false)
-        return MyViewHolder(binding)
+        //val layoutInflater = LayoutInflater.from(parent.context)
+        //val binding = RowLayoutBinding.inflate(layoutInflater, parent, false)
+        //return MyViewHolder(binding)
+
+        return MyViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val currentItem = dataList[position]
+        holder.bind(currentItem)
+
+        /*
         holder.binding.textViewTitle.text = dataList[position].title
         holder.binding.textViewDescription.text = dataList[position].description
         holder.binding.rowBackground.setOnClickListener {
@@ -47,7 +65,7 @@ class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
                     R.color.green
                 )
             )
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {

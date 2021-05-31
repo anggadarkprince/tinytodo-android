@@ -16,7 +16,9 @@ import com.anggaari.tinytodo.fragments.SharedViewModel
 import com.anggaari.tinytodo.utils.Helpers.hideKeyboard
 
 class UpdateFragment : Fragment() {
-    private lateinit var binding: FragmentUpdateBinding
+    private var _binding: FragmentUpdateBinding? = null
+    private val binding get() = _binding!!
+
     private val args by navArgs<UpdateFragmentArgs>()
     private val sharedViewModel: SharedViewModel by viewModels()
     private val todoViewModel: TodoViewModel by viewModels()
@@ -25,13 +27,14 @@ class UpdateFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentUpdateBinding.inflate(inflater, container, false)
+        _binding = FragmentUpdateBinding.inflate(inflater, container, false)
+        binding.args = args
 
         setHasOptionsMenu(true)
 
-        binding.currentEditTextTitle.setText(args.currentItem.title)
-        binding.currentEditTextDescription.setText(args.currentItem.description)
-        binding.currentSpinnerPriorities.setSelection(sharedViewModel.parsePriorityToInt(args.currentItem.priority))
+        //binding.currentEditTextTitle.setText(args.currentItem.title)
+        //binding.currentEditTextDescription.setText(args.currentItem.description)
+        //binding.currentSpinnerPriorities.setSelection(sharedViewModel.parsePriorityToInt(args.currentItem.priority))
         binding.currentSpinnerPriorities.onItemSelectedListener = sharedViewModel.prioritySelectedListener
 
         return binding.root
@@ -96,5 +99,10 @@ class UpdateFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
