@@ -11,7 +11,7 @@ import com.anggaari.tinytodo.R
 import com.anggaari.tinytodo.data.models.Priority
 
 class SharedViewModel(application: Application): AndroidViewModel(application) {
-    val listener: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+    val prioritySelectedListener: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
             when(position) {
                 0 -> {(parent?.getChildAt(0) as TextView).setTextColor(ContextCompat.getColor(application, R.color.red))}
@@ -29,7 +29,7 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
         } else !(title.isEmpty() || description.isEmpty())
     }
 
-    public fun parsePriority(priority: String): Priority {
+    fun parsePriority(priority: String): Priority {
         return when (priority) {
             "High Priority" -> Priority.HIGH
             "Medium Priority" -> Priority.MEDIUM

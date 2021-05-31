@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.anggaari.tinytodo.R
@@ -25,6 +26,10 @@ class ListAdapter : Adapter<ListAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.textViewTitle.text = dataList[position].title
         holder.binding.textViewDescription.text = dataList[position].description
+        holder.binding.rowBackground.setOnClickListener {
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(dataList[position])
+            holder.itemView.findNavController().navigate(action)
+        }
 
         when (dataList[position].priority) {
             Priority.HIGH -> holder.binding.priorityIndicator.setCardBackgroundColor(
