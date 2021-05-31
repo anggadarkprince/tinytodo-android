@@ -13,6 +13,7 @@ import com.anggaari.tinytodo.data.models.TodoData
 import com.anggaari.tinytodo.data.viewmodel.TodoViewModel
 import com.anggaari.tinytodo.databinding.FragmentUpdateBinding
 import com.anggaari.tinytodo.fragments.SharedViewModel
+import com.anggaari.tinytodo.utils.Helpers.hideKeyboard
 
 class UpdateFragment : Fragment() {
     private lateinit var binding: FragmentUpdateBinding
@@ -31,8 +32,7 @@ class UpdateFragment : Fragment() {
         binding.currentEditTextTitle.setText(args.currentItem.title)
         binding.currentEditTextDescription.setText(args.currentItem.description)
         binding.currentSpinnerPriorities.setSelection(sharedViewModel.parsePriorityToInt(args.currentItem.priority))
-        binding.currentSpinnerPriorities.onItemSelectedListener =
-            sharedViewModel.prioritySelectedListener
+        binding.currentSpinnerPriorities.onItemSelectedListener = sharedViewModel.prioritySelectedListener
 
         return binding.root
     }
@@ -46,6 +46,7 @@ class UpdateFragment : Fragment() {
             R.id.menu_save -> updateItem()
             R.id.menu_delete -> confirmItemRemoval()
         }
+        hideKeyboard()
         return super.onOptionsItemSelected(item)
     }
 

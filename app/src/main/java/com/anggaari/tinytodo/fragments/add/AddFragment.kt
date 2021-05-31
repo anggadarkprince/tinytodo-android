@@ -11,6 +11,7 @@ import com.anggaari.tinytodo.data.models.TodoData
 import com.anggaari.tinytodo.data.viewmodel.TodoViewModel
 import com.anggaari.tinytodo.databinding.FragmentAddBinding
 import com.anggaari.tinytodo.fragments.SharedViewModel
+import com.anggaari.tinytodo.utils.Helpers.hideKeyboard
 
 class AddFragment : Fragment() {
     private lateinit var binding: FragmentAddBinding
@@ -41,6 +42,7 @@ class AddFragment : Fragment() {
         if (item.itemId == R.id.menu_add) {
             insertDataToDB()
         }
+        hideKeyboard()
         return super.onOptionsItemSelected(item)
     }
 
