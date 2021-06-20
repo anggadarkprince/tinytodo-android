@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cardBackgroundColor">@color/darker</color>
+    <color name="cardStrokeColor">@color/darker</color>
+    <color name="backgroundColor">@color/dark</color>
+    <color name="titleColor">@color/light</color>
+    <color name="subtitleColor">@color/dark</color>
+
+    <color name="actionBarBackgroundColor">@color/darker</color>
+    <color name="statusBarColor">@color/black</color>
+</resources>

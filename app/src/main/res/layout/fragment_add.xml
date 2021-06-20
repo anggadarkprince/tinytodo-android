@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
+    android:background="@color/backgroundColor"
     tools:context=".fragments.add.AddFragment">
 
     <EditText
@@ -14,6 +15,8 @@
         android:ems="10"
         android:inputType="textCapWords"
         android:hint="@string/title"
+        android:textColor="@color/titleColor"
+        android:textColorHint="@color/subtitleColor"
         android:paddingHorizontal="24dp"
         android:background="@drawable/custom_input"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,6 +49,8 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:hint="@string/description"
+        android:textColor="@color/titleColor"
+        android:textColorHint="@color/subtitleColor"
         android:background="@drawable/custom_input"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

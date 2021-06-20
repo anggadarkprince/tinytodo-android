@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="24dp"
+        android:background="@color/backgroundColor"
         tools:context=".fragments.update.UpdateFragment">
 
         <EditText
@@ -26,6 +27,8 @@
             android:paddingHorizontal="24dp"
             android:background="@drawable/custom_input"
             android:text="@{args.currentItem.title}"
+            android:textColor="@color/titleColor"
+            android:textColorHint="@color/subtitleColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +61,8 @@
             android:inputType="textMultiLine"
             android:hint="@string/description"
             android:text="@{args.currentItem.description}"
+            android:textColor="@color/titleColor"
+            android:textColorHint="@color/subtitleColor"
             android:background="@drawable/custom_input"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

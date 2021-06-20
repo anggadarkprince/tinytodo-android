@@ -5,9 +5,22 @@
     <color name="colorAccent">#9D46FF</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="light">#F8F8F8</color>
     <color name="lightGray">#E6E6E6</color>
     <color name="darkGray">#4B4B4B</color>
+    <color name="dark">#2A333A</color>
+    <color name="darker">#151B20</color>
+    <color name="black">#000000</color>
     <color name="red">#FF4646</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
+
+    <color name="cardBackgroundColor">@color/white</color>
+    <color name="cardStrokeColor">@color/lightGray</color>
+    <color name="backgroundColor">@color/light</color>
+    <color name="titleColor">@color/darkGray</color>
+    <color name="subtitleColor">@color/lightGray</color>
+
+    <color name="actionBarBackgroundColor">@color/colorPrimary</color>
+    <color name="statusBarColor">@color/colorPrimaryDark</color>
 </resources>
